@@ -2,6 +2,8 @@
 
 Runnable examples demonstrating the [Sheetz](https://github.com/chitralabs/sheetz) library — high-performance Excel and CSV processing for Java.
 
+**Looking for performance data?** See [sheetz-benchmarks](https://github.com/chitralabs/sheetz-benchmarks) for JMH benchmarks and code comparisons against Apache POI, EasyExcel, FastExcel, and Poiji.
+
 [![Maven Central](https://img.shields.io/maven-central/v/io.github.chitralabs.sheetz/sheetz-core)](https://central.sonatype.com/artifact/io.github.chitralabs.sheetz/sheetz-core)
 
 ## Prerequisites
