@@ -1,8 +1,9 @@
 # Sheetz Examples — Learn Excel & CSV Processing in Java by Example
 
+[![Build](https://github.com/chitralabs/sheetz-examples/actions/workflows/ci.yml/badge.svg)](https://github.com/chitralabs/sheetz-examples/actions/workflows/ci.yml)
 [![Maven Central](https://img.shields.io/maven-central/v/io.github.chitralabs.sheetz/sheetz-core)](https://central.sonatype.com/artifact/io.github.chitralabs.sheetz/sheetz-core)
 [![Java 11+](https://img.shields.io/badge/Java-11%2B-blue.svg)](https://openjdk.java.net/)
-[![License](https://img.shields.io/badge/License-Apache%202.0-green.svg)](https://www.apache.org/licenses/LICENSE-2.0)
+[![License](https://img.shields.io/badge/License-Apache%202.0-green.svg)](LICENSE)
 [![GitHub stars](https://img.shields.io/github/stars/chitralabs/sheetz?style=social)](https://github.com/chitralabs/sheetz)
 
 **8 runnable examples** demonstrating every feature of the [Sheetz](https://github.com/chitralabs/sheetz) library — read, write, stream, and validate Excel and CSV files in Java with minimal code.
