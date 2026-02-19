@@ -34,6 +34,12 @@ Output files are written to the `output/` directory.
 
 ---
 
+> ⭐ **Sheetz just read that Excel file in one line.** If that saved you time,
+> please [star the main repo](https://github.com/chitralabs/sheetz) — it helps
+> other Java developers discover this library.
+
+---
+
 ## Examples
 
 ### 01 — Basic Read & Write
@@ -239,6 +245,26 @@ done
 ```groovy
 implementation 'io.github.chitralabs.sheetz:sheetz-core:1.0.1'
 ```
+
+## 🤝 Add Your Own Example
+
+Have a use case not covered here? **We want your example!**
+
+Ideas we'd love PRs for:
+- [ ] E09 — Spring Boot REST endpoint that exports data to Excel
+- [ ] E10 — Database import pipeline (read Excel → save to JPA/Hibernate)
+- [ ] E11 — Concurrent multi-file processing with ExecutorService
+- [ ] E12 — Error recovery — partial import with validation report
+- [ ] E13 — Dynamic headers — read files where column order is unknown
+- [ ] E14 — Large file memory benchmark — heap usage comparison
+
+**How to contribute an example:**
+1. Copy an existing example file (e.g. `E01_BasicReadWrite.java`) as a template
+2. Name it `E09_YourExampleName.java`
+3. Add it to `README.md` following the existing format
+4. Open a PR — your name goes in the changelog!
+
+See [CONTRIBUTING.md](CONTRIBUTING.md) for details.
 
 ## Links
 
