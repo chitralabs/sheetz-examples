@@ -6,7 +6,7 @@
 [![License](https://img.shields.io/badge/License-Apache%202.0-green.svg)](LICENSE)
 [![GitHub stars](https://img.shields.io/github/stars/chitralabs/sheetz?style=social)](https://github.com/chitralabs/sheetz)
 
-**8 runnable examples** demonstrating every feature of the [Sheetz](https://github.com/chitralabs/sheetz) library — read, write, stream, and validate Excel and CSV files in Java with minimal code.
+\*\*9 runnable examples\*\* demonstrating every feature of the [Sheetz](https://github.com/chitralabs/sheetz) library — read, write, stream, and validate Excel and CSV files in Java with minimal code.
 
 ```java
 // This is all it takes to read an Excel file into Java objects
@@ -191,7 +191,7 @@ Sheetz.register(BigDecimal.class, new MoneyConverter());
 
 ### 08 — Format Conversion
 
-Convert between XLSX, XLS, and CSV formats. Sheetz auto-detects the format from the file extension — converting is just read + write.
+Convert between XLSX, XLS, CSV, and ODS formats. Sheetz auto-detects the format from the file extension — converting is just read + write.
 
 ```java
 // XLSX → CSV
@@ -207,6 +207,37 @@ Sheetz.write(data, "products.xls");
 
 ---
 
+### 09 — Cell Styling
+
+Apply cell formatting with `@Style` annotations, build header styles programmatically with `CellStyleBuilder`, and embed clickable hyperlinks with `HyperlinkValue`.
+
+```java
+// @Style annotation for per-field styling
+@Column("Product Name")
+@Style(bold = true, fontColor = "#0000FF")
+public String name;
+
+@Column("Website")
+@Style(hyperlink = true)
+public HyperlinkValue website;
+
+// Programmatic header style
+CellStyleDef headerStyle = CellStyleBuilder.create()
+    .bold(true).backgroundColor("#003366").fontColor("#FFFFFF")
+    .horizontalAlignment("CENTER").build();
+
+Sheetz.writer(StyledProduct.class)
+    .data(products)
+    .file("styled.xlsx")
+    .headerStyle(headerStyle)
+    .autoFilter(true)
+    .write();
+```
+
+[View source](src/main/java/io/github/chitralabs/sheetz/examples/E09_CellStyling.java)
+
+---
+
 ## Running Examples
 
 ```bash
@@ -217,7 +248,7 @@ mvn compile exec:java -Dexec.mainClass="io.github.chitralabs.sheetz.examples.E01
 mvn compile exec:java -Dexec.mainClass="io.github.chitralabs.sheetz.examples.E03_StreamingLargeFiles"
 
 # Run all examples in sequence
-for i in 01 02 03 04 05 06 07 08; do
+for i in 01 02 03 04 05 06 07 08 09; do
   echo "--- Running E${i} ---"
   mvn -q compile exec:java -Dexec.mainClass="io.github.chitralabs.sheetz.examples.E${i}_$(ls src/main/java/io/github/chitralabs/sheetz/examples/E${i}_*.java | xargs basename | sed 's/.java//')"
 done
@@ -251,16 +282,16 @@ implementation 'io.github.chitralabs.sheetz:sheetz-core:1.0.2'
 Have a use case not covered here? **We want your example!**
 
 Ideas we'd love PRs for:
-- [ ] E09 — Spring Boot REST endpoint that exports data to Excel
-- [ ] E10 — Database import pipeline (read Excel → save to JPA/Hibernate)
-- [ ] E11 — Concurrent multi-file processing with ExecutorService
-- [ ] E12 — Error recovery — partial import with validation report
-- [ ] E13 — Dynamic headers — read files where column order is unknown
-- [ ] E14 — Large file memory benchmark — heap usage comparison
+- [ ] E10 — Spring Boot REST endpoint that exports data to Excel
+- [ ] E11 — Database import pipeline (read Excel → save to JPA/Hibernate)
+- [ ] E12 — Concurrent multi-file processing with ExecutorService
+- [ ] E13 — Error recovery — partial import with validation report
+- [ ] E14 — Dynamic headers — read files where column order is unknown
+- [ ] E15 — Large file memory benchmark — heap usage comparison
 
 **How to contribute an example:**
 1. Copy an existing example file (e.g. `E01_BasicReadWrite.java`) as a template
-2. Name it `E09_YourExampleName.java`
+2. Name it `E10_YourExampleName.java`
 3. Add it to `README.md` following the existing format
 4. Open a PR — your name goes in the changelog!
 

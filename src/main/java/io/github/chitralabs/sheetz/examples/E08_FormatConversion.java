@@ -14,6 +14,8 @@ import java.util.List;
  * - XLSX → CSV
  * - CSV → XLSX
  * - XLSX → XLS (legacy format)
+ * - XLSX → ODS (OpenDocument format)
+ * - ODS → XLSX
  * - Read and write with format auto-detection from file extension
  */
 public class E08_FormatConversion {
@@ -55,20 +57,36 @@ public class E08_FormatConversion {
         Sheetz.write(fromXlsx, xlsPath);
         System.out.println("Converted " + xlsxPath + " → " + xlsPath);
 
+        // --- XLSX → ODS ---
+        System.out.println("\n--- XLSX → ODS ---");
+        String odsPath = "output/converted.ods";
+        Sheetz.write(fromXlsx, odsPath);
+        System.out.println("Converted " + xlsxPath + " → " + odsPath);
+
+        // --- ODS → XLSX ---
+        System.out.println("\n--- ODS → XLSX ---");
+        List<Product> fromOds = Sheetz.read(odsPath, Product.class);
+        String fromOdsXlsx = "output/from_ods.xlsx";
+        Sheetz.write(fromOds, fromOdsXlsx);
+        System.out.println("Converted " + odsPath + " → " + fromOdsXlsx);
+
         // --- Verify all formats contain the same data ---
         System.out.println("\n--- Verification: all formats contain same data ---");
         List<Product> verifyXlsx = Sheetz.read(newXlsxPath, Product.class);
         List<Product> verifyCsv  = Sheetz.read(csvPath, Product.class);
         List<Product> verifyXls  = Sheetz.read(xlsPath, Product.class);
+        List<Product> verifyOds  = Sheetz.read(odsPath, Product.class);
 
         System.out.println("XLSX rows: " + verifyXlsx.size());
         System.out.println("CSV  rows: " + verifyCsv.size());
         System.out.println("XLS  rows: " + verifyXls.size());
+        System.out.println("ODS  rows: " + verifyOds.size());
 
         System.out.println("\nFirst product from each format:");
         System.out.println("  XLSX: " + verifyXlsx.get(0));
         System.out.println("  CSV:  " + verifyCsv.get(0));
         System.out.println("  XLS:  " + verifyXls.get(0));
+        System.out.println("  ODS:  " + verifyOds.get(0));
 
         System.out.println("\nDone!");
     }
