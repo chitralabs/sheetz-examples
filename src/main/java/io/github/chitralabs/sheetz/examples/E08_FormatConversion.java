@@ -13,6 +13,7 @@ import java.util.List;
  * Demonstrates converting between Excel and CSV formats:
  * - XLSX → CSV
  * - CSV → XLSX
+ * - XLSX → ODS (OpenDocument)
  * - XLSX → XLS (legacy format)
  * - Read and write with format auto-detection from file extension
  */
@@ -49,6 +50,12 @@ public class E08_FormatConversion {
         Sheetz.write(fromCsv, newXlsxPath);
         System.out.println("Converted " + csvPath + " → " + newXlsxPath);
 
+        // --- XLSX → ODS ---
+        System.out.println("\n--- XLSX → ODS (OpenDocument) ---");
+        String odsPath = "output/converted.ods";
+        Sheetz.write(fromXlsx, odsPath);
+        System.out.println("Converted " + xlsxPath + " → " + odsPath);
+
         // --- XLSX → XLS ---
         System.out.println("\n--- XLSX → XLS (legacy format) ---");
         String xlsPath = "output/legacy.xls";
@@ -59,15 +66,18 @@ public class E08_FormatConversion {
         System.out.println("\n--- Verification: all formats contain same data ---");
         List<Product> verifyXlsx = Sheetz.read(newXlsxPath, Product.class);
         List<Product> verifyCsv  = Sheetz.read(csvPath, Product.class);
+        List<Product> verifyOds  = Sheetz.read(odsPath, Product.class);
         List<Product> verifyXls  = Sheetz.read(xlsPath, Product.class);
 
         System.out.println("XLSX rows: " + verifyXlsx.size());
         System.out.println("CSV  rows: " + verifyCsv.size());
+        System.out.println("ODS  rows: " + verifyOds.size());
         System.out.println("XLS  rows: " + verifyXls.size());
 
         System.out.println("\nFirst product from each format:");
         System.out.println("  XLSX: " + verifyXlsx.get(0));
         System.out.println("  CSV:  " + verifyCsv.get(0));
+        System.out.println("  ODS:  " + verifyOds.get(0));
         System.out.println("  XLS:  " + verifyXls.get(0));
 
         System.out.println("\nDone!");
