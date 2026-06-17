@@ -6,6 +6,8 @@
 [![License](https://img.shields.io/badge/License-Apache%202.0-green.svg)](LICENSE)
 [![GitHub stars](https://img.shields.io/github/stars/chitralabs/sheetz?style=social)](https://github.com/chitralabs/sheetz)
 
+📚 **[Full Documentation](https://chitralabs.github.io/sheetz/)** | 🔄 [Migration from POI](https://chitralabs.github.io/sheetz/migration-from-poi) | 📊 [Benchmarks](https://chitralabs.github.io/sheetz/benchmarks)
+
 **9 runnable examples** demonstrating every feature of the [Sheetz](https://github.com/chitralabs/sheetz) library — read, write, stream, and validate Excel and CSV files in Java with minimal code.
 
 ```java
